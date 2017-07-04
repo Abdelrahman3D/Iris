@@ -1,0 +1,71 @@
+.dropdown
+    position: relative
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-start
+
+    &.is-right
+        justify-content: flex-end
+
+    &.is-center
+        justify-content: center
+
+    &-menu
+        position: relative
+        position: absolute
+        top: 70px
+        left: 0
+        padding: $padding
+        width: 300px
+        border: 1px solid $gray
+        box-shadow: 0px 2px 10px $shadow
+        border-radius: $border-radius
+        color: $dark
+        transform-origin: top left
+        transition: 0.2s
+        transform: scale(0)
+
+        &:before
+            position: absolute
+            display: block
+            content: ''
+            top: -7px
+            left: $padding
+            width: 0
+            height: 0
+            border-style: solid
+            border-width: 0 7px 7px 7px
+            border-color: transparent transparent $gray transparent
+
+        &:after
+            position: absolute
+            display: block
+            content: ''
+            top: -6px
+            left: $padding
+            width: 0
+            height: 0
+            border-style: solid
+            border-width: 0 7px 7px 7px
+            border-color: transparent transparent $white transparent
+
+        .is-right &
+            left: auto
+            left: initial
+            right: 0
+            transform-origin: top right
+            &:before
+            &:after
+                left: auto
+                left: initial
+                right: $padding
+
+        .is-center &
+            left: calc(50% - 150px)
+            transform-origin: top center
+            &:before
+            &:after
+                left: calc(50% - 7px)
+
+        &.is-active
+            transform: scale(1)

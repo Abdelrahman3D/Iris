@@ -1,0 +1,83 @@
+.accordion
+    padding: 0px
+    margin: 0
+    list-style: none
+    border-radius: $border-radius
+    max-width: 100%
+    margin-bottom: $margin
+    &.is-clean
+        margin-top: $margin
+
+    &-item
+        position: relative
+        padding: $padding
+        background-color: $white
+        color: $lightDark
+        border-radius: $border-radius
+        box-shadow: 0px 2px 10px $shadow
+        &:not(:last-child)
+            margin-bottom: 10px
+        &.is-active
+            color: $dark
+        .is-clean &
+            box-shadow: initial
+            margin-bottom: 0
+
+    &-body
+        overflow: hidden
+        padding: 0 $padding
+        transition: 0.4s
+        height: 0
+        .is-active > &
+            height: auto
+
+    &-list
+        list-style: none
+        margin: 0 0 0 $margin
+        padding: 0
+        li
+            padding: $padding
+        a
+            color: $dark
+            text-decoration: none
+            &:hover
+                color: $blue
+
+    &-title
+        display: block
+        padding: $padding
+        width: 100%
+        font-weight: bold
+        cursor: pointer
+
+    &-icon
+        position: absolute
+        right: 20px
+        top: 20px
+        height: calc(100% - 20px)
+        padding: 10px
+        &:after
+            position: absolute
+            top: 0
+            content: ''
+            display: block
+            width: 2px
+            height: 10px
+            background-color: $gray
+            border-radius: 5px
+            transform: rotate(45deg)
+        &:before
+            position: absolute
+            top: 0
+            right: -6px
+            margin-right: 20px
+            content: ''
+            display: block
+            width: 2px
+            height: 10px
+            background-color: $gray
+            border-radius: 5px
+            transform: rotate(-45deg)
+            transition: 0.4s
+            .is-active &
+                right: -12px

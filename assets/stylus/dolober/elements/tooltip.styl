@@ -1,0 +1,81 @@
+[tooltip]
+    position: relative
+    &:hover
+        &:before
+        &:after
+            opacity: 1
+            visibility: visible
+
+    &:before
+        position: absolute
+        display: block
+        content: ''
+        top: -13px
+        left: 50%
+        transform: translate(-50%, 0)
+        width: 0
+        height: 0
+        border-style: solid
+        border-width: 7px 7px 0 7px
+        border-color: $dark transparent transparent transparent
+        transition: 0.4s
+        opacity: 0
+        visibility: hidden
+        z-index: 99999
+    &:after
+        position: absolute
+        display: block
+        content: attr(tooltip)
+        top: -44px
+        left: 50%
+        transform: translate(-50%, 0)
+        background-color: $dark
+        padding: $padding
+        white-space: nowrap
+        border-radius: $border-radius
+        font-size: $font-small
+        line-height: $font-small
+        transition: 0.4s
+        opacity: 0
+        visibility: hidden
+        z-index: 99999
+
+[tooltip-position="bottom"]
+    &:before
+        top: auto
+        top: initial
+        bottom: -13px
+        border-width: 0 7px 7px 7px
+        border-color: transparent transparent $dark transparent
+    &:after
+        top: auto
+        top: initial
+        bottom: -44px
+
+[tooltip-position="left"]
+    &:before
+        top: 50%
+        left: -13px
+        transform: translate(0, -50%)
+        border-width: 7px 0 7px 7px
+        border-color: transparent transparent transparent $dark
+    &:after
+        top: 50%
+        transform: translate(-100%, -50%)
+        left: -12px
+
+[tooltip-position="right"]
+    &:before
+        top: 50%
+        left: auto
+        left: initial
+        right: -13px
+        transform: translate(0, -50%)
+        border-width: 7px 7px 7px 0
+        border-color: transparent $dark transparent transparent
+    &:after
+        top: 50%
+        transform: translate(100%, -50%)
+        left: auto
+        left: initial
+        right: -12px

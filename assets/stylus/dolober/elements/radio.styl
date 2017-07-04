@@ -1,0 +1,33 @@
+.radio
+    margin: multiple($margin, 1/2) 0
+    &-input
+        display: none
+        &:checked
+            + .radio-label .radio-circle:before
+                background-color: $blue
+    &-label
+        display: inline-flex
+        line-height: 24px
+        font-size: $font-default
+        color: $dark
+        &:hover
+            color: $blue
+
+    &-circle
+        display: inline
+        width: 24px
+        height: 24px
+        border-radius: 15px
+        border: 1px solid $gray
+        padding: 0
+        margin-{$end-direction}: 12px
+        cursor: pointer
+
+        &:before
+            content: ''
+            display: block
+            width: 8px
+            height: 8px
+            border-radius: 9px
+            margin: 7px
+            transition: 0.5s

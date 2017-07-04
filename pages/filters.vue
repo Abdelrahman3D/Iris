@@ -1,0 +1,65 @@
+<template>
+  <div class="app">
+    <div class="toolbox">
+      <div class="input is-rounded is-button">
+        <input type="file" name="image" id="image">
+        <label for="image">Choose an image</label>
+        <a href="" class="button is-green">a</a>
+      </div>
+      <div class="filters">
+        <a class="filters-item"
+          v-for="kernel in kernels"
+          @click="addFilter(kernel.matrix)">{{ kernel.name }}</a>
+      </div>
+      <div class="matrix">
+        <input v-for="n in customMatrix" type="number" v-model="n.value">
+        <button @click="customFilter" type="button" class="matrix-button">Apply</button>
+      </div>
+    </div>
+    <div class="artboard-wrapper">
+      <canvas ref="canvas" class="artboard">
+        your browser doesn't support HTML5
+      </canvas>
+    </div>
+  </div>
+</template>
+
+<script>
+import Filters from '~assets/js/Filters';
+import kernels from '~assets/js/kernels';
+
+
+export default {
+  data: () => ({
+    customMatrix: [
+      { value: 0 },
+      { value: 0 },
+      { value: 0 },
+      { value: 0 },
+      { value: 1 },
+      { value: 0 },
+      { value: 0 },
+      { value: 0 },
+      { value: 0 }
+    ],
+    image: '',
+    kernels
+  }),
+  watch: {
+
+  },
+  mounted() {
+    this.filters = new Filters(this.$refs.canvas);
+    this.filters.loadImage('./img/image-01.jpg');
+  },
+  methods: {
+    addFilter(kernel) {
+      this.filters.addFilter(kernel);
+    },
+    customFilter() {
+      const kernel = this.customMatrix.map((el) => el.value);
+      this.addFilter(kernel);
+    }
+  }
+};
+</script>

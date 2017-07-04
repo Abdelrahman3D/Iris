@@ -1,0 +1,27 @@
+.navbar
+    height: 60px
+    background-color: $white
+    display: flex
+    padding: 0 $padding
+    box-shadow: 0 5px 10px -5px $shadow
+    &-menu
+        display: flex
+        align-items: center
+        justify-content: center
+        list-style: none
+        height: 100%
+        margin: 0
+        padding: 0
+    &-item
+        padding: $padding
+        margin: 0 multiple($margin, 1/2)
+        height: 100%
+        line-height: 40px
+        cursor: pointer
+        color: $dark
+        text-decoration: none
+        &:hover
+            border-bottom: 2px solid $blue
+
+        &.is-active
+            border-bottom: 4px solid $blue

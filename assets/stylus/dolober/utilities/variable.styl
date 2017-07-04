@@ -1,0 +1,42 @@
+/**
+ * Device Breakpoint
+ */
+$mobile     := 0
+$tablet     := 768px
+$screen     := 991px
+$widescreen := 1360px
+$ultrawide  := 1920px
+
+/**
+ * elements
+ */
+$border-radius := 6px
+
+/**
+ * base
+ */
+$margin       := 10px
+$padding      := 10px
+$gutter       := 16px
+$font-small   := 12px
+$font-default := 16px
+$font-large   := 23px
+
+/**
+ * grid
+ */
+$columns          := 12
+$direction        := ltr
+$start-direction  := setDirection('start')
+$end-direction    := setDirection('end')
+
+$container-mobile     := calc(100%   -  22px)
+$container-tablet     := $tablet     - (22 * 2)
+$container-screen     := $screen     - (22 * 3)
+$container-widescreen := $widescreen - (22 * 4)
+$container-ultrawide  := $ultrawide  - (22 * 5)
+
+/**
+ * Enable/Disable css variables
+ */
+$cssVar := false

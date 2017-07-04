@@ -1,0 +1,86 @@
+.buttons
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    +mobile()
+        flex-direction: column
+    .button
+        &:not(:first-child):not(:last-child)
+            border-width: 1px 0
+            border-radius: 0
+        &:first-child
+            border-top-{$end-direction}-radius: 0
+            border-bottom-{$end-direction}-radius: 0
+        &:last-child
+            border-top-{$start-direction}-radius: 0
+            border-bottom-{$start-direction}-radius: 0
+
+        +mobile()
+            width: 100%
+            &:not(:first-child):not(:last-child)
+                border-width: 0 1px
+            &:first-child
+                border-radius: $border-radius
+                border-bottom-right-radius: 0
+                border-bottom-left-radius: 0
+            &:last-child
+                border-radius: $border-radius
+                border-top-right-radius: 0
+                border-top-left-radius: 0
+
+    >.label
+        margin: -11px -14px
+
+    &.is-block
+        >.button
+            @extend .button.is-block
+    &.is-tiny
+        >.button
+            @extend .button.is-tiny
+    &.is-small
+        >.button
+            @extend .button.is-small
+    &.is-large
+        >.button
+            @extend .button.is-large
+
+    &.is-rounded
+        >.button
+            @extend .button.is-rounded
+
+    &.is-embossed
+        >.button
+            @extend .button.is-embossed
+
+    &.is-floating
+        >.button
+            @extend .button.is-floating
+
+    &.is-floating.is-embossed
+        >.button
+            @extend .button.is-floating.is-embossed
+
+    &.is-default
+    &.is-dark
+        >.button
+            @extend .button.is-dark
+
+    &.is-primary
+    &.is-blue
+        >.button
+            @extend .button.is-blue
+
+    &.is-error
+    &.is-red
+        >.button
+            @extend .button.is-red
+
+    &.is-success
+    &.is-green
+        >.button
+            @extend .button.is-green
+
+    &.is-disabled
+    &[disabled]
+        >.button
+            @extend .button.is-disabled

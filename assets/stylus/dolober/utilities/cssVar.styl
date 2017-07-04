@@ -1,0 +1,64 @@
+$cssVar = true
+_blue  = #4da1ff
+_green = #38E4B7
+_red   = #EA4F52
+_white = #FFFFFF
+_gray  = #CEDEE8
+_dark  = #323c47
+_black = #000000
+:root
+    --border-radius: 6px
+    --margin:       10px
+    --padding:      10px
+    --gutter:       16px
+    --font-small:   12px
+    --font-default: 16px
+    --font-large:   23px
+
+    // colors
+    --blue:       _blue
+    --green:      _green
+    --red:        _red
+    --white:      _white
+    --gray:       _gray
+    --dark:       _dark
+    --black:      _black
+    --shadow:      alpha(_black, 5%)
+    --blue-dark:   darken(_blue, 30%)
+    --green-dark:  darken(_green, 30%)
+    --red-dark:    darken(_red, 30%)
+    --white-dark:  darken(_white, 30%)
+    --dark-light:  lighten(_dark, 40%)
+    --dark-trans:  alpha(_dark, 90%)
+    --black-trans: alpha(_black, 90%)
+    --white-trans: alpha(_white, 70%)
+    --gray-trans:  alpha(_gray, 70%)
+    --main-color: var(--blue)
+    --main-color-dark: var(--blue-dark)
+
+$border-radius = var(--border-radius)
+$margin        = var(--margin)
+$padding       = var(--padding)
+$gutter        = var(--gutter)
+$font-small    = var(--font-small)
+$font-default  = var(--font-default)
+$font-large    = var(--font-large)
+
+// colors
+$blue   = var(--main-color, #4da1ff)
+$green  = var(--green, #38E4B7)
+$red    = var(--red, #EA4F52)
+$white  = var(--white, #FFFFFF)
+$gray   = var(--gray, #CEDEE8)
+$dark   = var(--dark, #323c47)
+$black  = var(--black, #000000)
+$shadow     = var(--shadow)
+$darkBlue   = var(--blue-dark)
+$darkGreen  = var(--green-dark)
+$darkRed    = var(--red-dark)
+$darkWhite  = var(--white-dark)
+$lightDark  = var(--dark-light)
+$transDark  = var(--dark-trans)
+$transBlack = var(--black-trans)
+$transWhite = var(--white-trans)
+$transGray  = var(--transGray)
