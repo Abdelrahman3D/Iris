@@ -40,6 +40,15 @@ class Filters {
     this.draw();
   }
 
+  resetFilters() {
+    this.filters = [[
+      0, 0, 0,
+      0, 1, 0,
+      0, 0, 0
+    ]];
+    this.draw();
+  }
+
   getAttribLocations() {
     this.frameSizeLocation = gl.getUniformLocation(this.program, 'frameSize');
     this.kernelLocation = gl.getUniformLocation(this.program, 'kernel[0]');

@@ -1,11 +1,10 @@
 <template>
   <div class="app">
     <div class="toolbox">
-      <div class="input is-rounded is-button">
-        <input type="file" name="image" id="image">
-        <label for="image">Choose an image</label>
-        <a href="" class="button is-green">a</a>
-      </div>
+      <select class="select" v-model="selectedImage">
+        <option v-for="image in images" :value="image">{{ image }}</option>
+      </select>
+      <a class="button is-red is-block is-rounded" @click="resetFilters">reset filters</a>
       <div class="filters">
         <a class="filters-item"
           v-for="kernel in kernels"
@@ -42,19 +41,32 @@ export default {
       { value: 0 },
       { value: 0 }
     ],
-    image: '',
+    images: [
+      './img/image-01.jpg',
+      './img/image-02.jpg',
+      './img/image-03.jpg'
+    ],
+    selectedImage: 'please an select image',
     kernels
   }),
   watch: {
-
+    selectedImage(value) {
+      if (!value) {
+        return;
+      }
+      this.filters.loadImage(this.selectedImage);
+    },
   },
   mounted() {
     this.filters = new Filters(this.$refs.canvas);
-    this.filters.loadImage('./img/image-01.jpg');
+    // this.filters.loadImage('./img/image-01.jpg');
   },
   methods: {
     addFilter(kernel) {
       this.filters.addFilter(kernel);
+    },
+    resetFilters() {
+      this.filters.resetFilters();
     },
     customFilter() {
       const kernel = this.customMatrix.map((el) => el.value);
