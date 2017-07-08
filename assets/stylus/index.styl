@@ -1,0 +1,61 @@
+$flexCenter
+  display: flex
+  justify-content: center
+  align-items: center
+
+.intro
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, 50%)
+  opacity: 0
+  width: 700px
+  height: 400px
+  background: alpha($white, 0.7)
+  border-radius: 20px
+  box-shadow: 0 10px 20px -5px alpha($dark, 0.9)
+  animation: 2s ease-in-out 1.5s introFadeIn forwards
+  @extends $flexCenter
+  
+  &-background
+    width: 100vw
+    height: 100vh
+    background-position: center center
+    background-size: cover
+    animation: 2s ease-in-out 1s backgroundBlur forwards
+    @extends $flexCenter
+
+  &-item
+    background-color: $white
+    width: 100px
+    height 100px
+    border-radius: 50px
+    translate: 0.5s
+    margin: 0 10px
+    text-decoration: none
+    color: $dark
+    @extends $flexCenter   
+    &:hover
+      box-shadow: 0 5px 10px -2px alpha($dark, 0.2)
+
+
+.clipscean
+  overflow: hidden
+  width: 100vw
+  height 100vh
+
+@keyframes backgroundBlur
+  0%
+    transform: scale(1)
+    filter: blur(0)
+  100%
+    filter: blur(3px)
+    transform: scale(1.1)    
+
+@keyframes introFadeIn
+  0%
+    transform: translate(-50%, 50%)
+    opacity: 0
+  100%
+    transform: translate(-50%, -50%);
+    opacity: 1

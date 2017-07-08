@@ -14,6 +14,9 @@
         <input v-for="n in customMatrix" type="number" v-model="n.value">
         <button @click="customFilter" type="button" class="matrix-button">Apply</button>
       </div>
+      
+      <a class="button is-white is-block is-rounded" href="/">back</a>
+      
     </div>
     <div class="artboard-wrapper">
       <canvas ref="canvas" class="artboard">
