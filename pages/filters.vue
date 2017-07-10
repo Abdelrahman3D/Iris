@@ -15,7 +15,7 @@
         <button @click="customFilter" type="button" class="matrix-button">Apply</button>
       </div>
       
-      <a class="button is-white is-block is-rounded" href="/">back</a>
+      <nuxt-link class="button is-white is-block is-rounded" to="/">back</nuxt-link>
       
     </div>
     <div class="artboard-wrapper">

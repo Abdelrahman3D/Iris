@@ -1,12 +1,24 @@
 <template>
-  <div class="clipscean">
-    <div class="intro-background" style="background-image: url('./img/background.jpg')"></div>
-    
+
+  <div class="intro-background" style="background-image: url('./img/background.jpg')">
     <div class="intro">
-      <a class="intro-item" href="filters">Filters</a>
-      <a class="intro-item">Face off</a>
-      <a class="intro-item">Magnific.</a>
-      
+      <nuxt-link class="intro-item" to="filters">
+        <svg class="icon">
+          <use xlink:href="./img/sprites.svg#icon-filter"></use>
+        </svg>
+      </nuxt-link>
+      <nuxt-link class="intro-item" to="mask">
+        <svg class="icon">
+          <use xlink:href="./img/sprites.svg#icon-mask"></use>
+        </svg>
+      </nuxt-link>
+      <nuxt-link class="intro-item" to="magnification">
+        <svg class="icon">
+          <use xlink:href="./img/sprites.svg#icon-magnification"></use>
+        </svg>
+      </nuxt-link>
     </div>
+    <img class="intro-hero" src="img/mona_lisa.png"/>
   </div>
+
 </template>

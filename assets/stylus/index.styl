@@ -4,46 +4,47 @@ $flexCenter
   align-items: center
 
 .intro
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, 50%)
-  opacity: 0
-  width: 700px
-  height: 400px
-  background: alpha($white, 0.7)
-  border-radius: 20px
-  box-shadow: 0 10px 20px -5px alpha($dark, 0.9)
-  animation: 2s ease-in-out 1.5s introFadeIn forwards
+  position: relative
+  width: 100%
+  height: 100%
+  border: 3px solid $yellow
+  background-color: alpha($dark, 0.1)
   @extends $flexCenter
+  z-index: 2
   
   &-background
     width: 100vw
     height: 100vh
+    padding: 30px
     background-position: center center
     background-size: cover
-    animation: 2s ease-in-out 1s backgroundBlur forwards
     @extends $flexCenter
 
   &-item
-    background-color: $white
+    background-color: $yellow
+    padding: 20px
     width: 100px
     height 100px
-    border-radius: 50px
-    translate: 0.5s
-    margin: 0 10px
+    transition: 0.2s
+    margin: 0 20px
     text-decoration: none
     color: $dark
-    @extends $flexCenter   
+    fill: $dark
+    @extends $flexCenter
+
+    .icon
+      width: 50px
+      height: 50px
     &:hover
-      box-shadow: 0 5px 10px -2px alpha($dark, 0.2)
+      transform: translateY(-5px)
+      box-shadow: 0 7px 10px -2px alpha($dark, 0.5)
 
-
-.clipscean
-  overflow: hidden
-  width: 100vw
-  height 100vh
-
+  &-hero
+    position: absolute
+    right: 30px
+    bottom: 30px
+    width: 400px
+    z-index: 1
 @keyframes backgroundBlur
   0%
     transform: scale(1)
