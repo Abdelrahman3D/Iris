@@ -1,4 +1,8 @@
 $yellow = #ffe916
+$flexCenter
+  display: flex
+  justify-content: center
+  align-items: center
 
 @import 'dolober/app'
 @import 'filters'
@@ -6,8 +10,12 @@ $yellow = #ffe916
 
 .page-enter-active
 .page-leave-active
-  transition: opacity .5s
+  transition: all .5s
+
+
 
 .page-enter
 .page-leave-to
   opacity: 0
+  
+  

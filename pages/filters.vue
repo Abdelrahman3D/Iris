@@ -4,7 +4,7 @@
       <select class="select" v-model="selectedImage">
         <option v-for="image in images" :value="image">{{ image }}</option>
       </select>
-      <a class="button is-red is-block is-rounded" @click="resetFilters">reset filters</a>
+      <a class="button is-red is-block" @click="resetFilters">reset filters</a>
       <div class="filters">
         <a class="filters-item"
           v-for="kernel in kernels"
@@ -13,12 +13,14 @@
       <div class="matrix">
         <input v-for="n in customMatrix" type="number" v-model="n.value">
         <button @click="customFilter" type="button" class="matrix-button">Apply</button>
-      </div>
-      
-      <nuxt-link class="button is-white is-block is-rounded" to="/">back</nuxt-link>
-      
+      </div>      
     </div>
     <div class="artboard-wrapper">
+      <nuxt-link class="artboard-back" to="/">
+        <svg class="icon">
+          <use xlink:href="/img/sprites.svg#icon-back"></use>
+        </svg>
+      </nuxt-link>
       <canvas ref="canvas" class="artboard">
         your browser doesn't support HTML5
       </canvas>

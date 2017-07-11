@@ -1,16 +1,13 @@
-$flexCenter
-  display: flex
-  justify-content: center
-  align-items: center
-
 .intro
   position: relative
   width: 100%
   height: 100%
   border: 3px solid $yellow
   background-color: alpha($dark, 0.1)
+  flex-wrap: wrap  
   @extends $flexCenter
-  z-index: 2
+  +mobile()
+    align-items: flex-start
   
   &-background
     width: 100vw
@@ -19,18 +16,24 @@ $flexCenter
     background-position: center center
     background-size: cover
     @extends $flexCenter
+      
 
   &-item
+    position: relative
     background-color: $yellow
     padding: 20px
     width: 100px
     height 100px
     transition: 0.2s
-    margin: 0 20px
+    margin: 20px
     text-decoration: none
     color: $dark
     fill: $dark
+    z-index: 2
     @extends $flexCenter
+    +mobile()
+      width: 100%
+
 
     .icon
       width: 50px
@@ -41,9 +44,10 @@ $flexCenter
 
   &-hero
     position: absolute
-    right: 30px
-    bottom: 30px
+    right: 0
+    bottom: 0
     width: 400px
+    max-width: 100%
     z-index: 1
 @keyframes backgroundBlur
   0%
