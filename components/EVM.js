@@ -2,7 +2,7 @@ import * as utils from './utils';
 import ColorPyramid from './ColorPyramid';
 
 export default class EVM {
-  constructor (ctx, xtc, width, height, depth) {
+  constructor(ctx, xtc, width, height, depth) {
     // Setup Canvas contexts.
     this.width = width;
     this.height = height;
@@ -19,7 +19,7 @@ export default class EVM {
     this.filtered = new ColorPyramid(width, height, depth);
   }
 
-  run (params) {
+  run(params) {
     const imageData = this.ctx.getImageData(0, 0, this.width, this.height);
     this.img_pyr.fromRGBA(imageData);
     this.img_pyr.pyrDown();
@@ -30,22 +30,22 @@ export default class EVM {
     this.lowpass2.iirFilter(this.img_pyr, params.r2);
     this.filtered.setSubtract(this.lowpass1, this.lowpass2);
 
-    let delta = params.lambda_c / 8 / (1 + params.alpha);
+    const delta = params.lambda_c / 8 / (1 + params.alpha);
     let lambda = Math.sqrt(this.height * this.height + this.width * this.width) / 3;
 
-    for(let n = 0; n < this.filtered.levels; n++) {
+    for (let n = 0; n < this.filtered.levels; n++) {
       let currAlpha = lambda / delta / 8 - 1;
       currAlpha *= params.exaggeration_factor;
 
-      if(n <= 0 || n == this.filtered.levels - 1) {
+      if (n <= 0 || n == this.filtered.levels - 1) {
         this.filtered.mulLevel(n, 0);
-      } else if(currAlpha > params.alpha) {
+      } else if (currAlpha > params.alpha) {
         this.filtered.mulLevel(n, params.alpha);
       } else {
         this.filtered.mulLevel(n, currAlpha);
       }
 
-      lambda = lambda / 2;
+      lambda /= 2;
     }
 
     this.img_ryp.lpyrUp(this.filtered);
@@ -63,10 +63,10 @@ export default class EVM {
     this.img_ryp.exportLayer(0, merp);
     this.ctx.putImageData(merp, 0, 0);
 
-    if(this.frames === 0){
+    if (this.frames === 0) {
       this.lowpass1.iirFilter(this.img_pyr, 1);
       this.lowpass2.iirFilter(this.img_pyr, 1);
     }
-    this.frames++
+    this.frames++;
   }
-};
+}
