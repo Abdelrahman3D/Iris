@@ -4,17 +4,17 @@
     <div class="intro">
       <nuxt-link class="intro-item" to="filters">
         <svg class="icon">
-          <use xlink:href="./img/sprites.svg#icon-filter"></use>
+          <use xlink:href="/img/sprites.svg#icon-filter"></use>
         </svg>
       </nuxt-link>
       <nuxt-link class="intro-item" to="mask">
         <svg class="icon">
-          <use xlink:href="./img/sprites.svg#icon-mask"></use>
+          <use xlink:href="/img/sprites.svg#icon-mask"></use>
         </svg>
       </nuxt-link>
       <nuxt-link class="intro-item" to="magnification">
         <svg class="icon">
-          <use xlink:href="./img/sprites.svg#icon-magnification"></use>
+          <use xlink:href="/img/sprites.svg#icon-magnification"></use>
         </svg>
       </nuxt-link>
     <img class="intro-hero" src="/img/mona_lisa.png"/>
