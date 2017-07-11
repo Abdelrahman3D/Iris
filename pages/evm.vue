@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import EVM from '~components/EVM';
+import EVM from '~assets/js/EVM';
 
 export default {
   head() {

@@ -7,7 +7,7 @@
           <use xlink:href="/img/sprites.svg#icon-filter"></use>
         </svg>
       </nuxt-link>
-      <nuxt-link class="intro-item" to="/mask">
+      <nuxt-link class="intro-item" to="/masks">
         <svg class="icon">
           <use xlink:href="/img/sprites.svg#icon-mask"></use>
         </svg>

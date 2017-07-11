@@ -1,2 +1,6 @@
-/components/ColorPyramid.js
-/components/EVM.js
+/assets/js/ColorPyramid.js
+/assets/js/EVM.js
+/assets/js/clmtrackr.min.js
+/assets/js/face_deformer.js
+/assets/data/*
+/components/FaceTracker.vue
