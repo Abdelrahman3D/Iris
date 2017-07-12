@@ -1,30 +1,33 @@
 <template lang="pug">
   div
-    label(for='exa') Exgaration Factor: 
+    label(for='exa') Exgaration Factor:
     input(type='range' ref="exa" style='width: 700px', min='0', max='5', step='0.01', @input='updateParams')
     br
-    label(for='alpha') Alpha: 
+    label(for='alpha') Alpha:
     input(type='range' ref="alpha" style='width: 700px', min='1', max='100', step='0.01', @input='updateParams')
     br
-    label(for='lambdac') Lambda: 
+    label(for='lambdac') Lambda:
     input(type='range' ref="lambdac" style='width: 700px', min='1', max='90', step='0.01', @input='updateParams')
     br
-    label(for='chroma') Chroma: 
+    label(for='chroma') Chroma:
     input(type='range', ref="chroma" style='width: 700px', min='0', max='10', step='0.01', @input='updateParams')
     br
-    label(for='r1') r1: 
+    label(for='r1') r1:
     input(type='range' ref="r1" style='width: 700px', min='0', max='1', step='0.01', @input='updateParams')
     br
-    label(for='r2') r2: 
+    label(for='r2') r2:
     input(type='range', ref="r2" style='width: 700px', min='0', max='1', step='0.01', @input='updateParams')
     br
     video(ref="video")
     canvas(ref="canvas")
     canvas(ref="savnac")
+    canvas(ref="chart")
 </template>
 
 <script>
 import EVM from '~assets/js/EVM';
+import Averaging from '~assets/js/Averaging';
+
 
 export default {
   head() {
@@ -63,7 +66,9 @@ export default {
 
       this.ctx = this.$refs.canvas.getContext('2d');
       this.xtc = this.$refs.savnac.getContext('2d');
+      this.chartCtx = this.$refs.chart.getContext('2d');
       this.$evm = new EVM(this.ctx, this.xtc, width, height, 5);
+      this.$average = new Averaging(this.ctx, this.chartCtx, width, height);
       this.render();
     },
     listen() {

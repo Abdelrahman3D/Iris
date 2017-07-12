@@ -25,10 +25,10 @@ class Filters {
     this.image = new Image();
     this.image.src = imageSrc;
 
-    this.canvas.width = this.image.width;
-    this.canvas.height = this.image.height;
-    gl.viewport(0, 0, this.canvas.width, this.canvas.height);
     this.image.onload = () => {
+      this.canvas.width = this.image.width;
+      this.canvas.height = this.image.height;
+      gl.viewport(0, 0, this.canvas.width, this.canvas.height);
       this.createFrameBuffers();
       this.draw();
     };
