@@ -16,7 +16,7 @@
       </div>      
     </div>
     <div class="artboard-wrapper">
-      <nuxt-link class="artboard-back" to="/">
+      <nuxt-link class="back" to="/">
         <svg class="icon">
           <use xlink:href="/img/sprites.svg#icon-back"></use>
         </svg>

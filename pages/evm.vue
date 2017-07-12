@@ -43,6 +43,10 @@
         
 
     .workspace.grid.is-center
+      nuxt-link.back(to="/")
+        svg.icon
+          use(xlink:href="/img/sprites.svg#icon-back")
+
       .column.is-6.is-center.source
         video(ref="video")
         a.upload
