@@ -1,33 +1,44 @@
 <template>
   <div class="face-tracker">
-    <video
-      :class="{ video: true, 'mirror__horizontal': mirroredH, 'mirror__vertical': mirroredV }"
-      ref="video"
-      :width="width"
-      :height="height"
-      preload="auto"
-      loop
-    ></video>
-    <canvas
-      :class="{ overlay: true, 'mirror__horizontal': mirroredH, 'mirror__vertical': mirroredV }"
-      :width="width"
-      :height="height"
-      ref="overlay"
-    ></canvas>
-    <canvas
-      v-if="hasMasks"
-      :class="{ overlay: true, 'mirror__horizontal': mirroredH, 'mirror__vertical': mirroredV }"
-      :width="width"
-      :height="height"
-      ref="webgl"
-    ></canvas>
-    <div class="selectbox">
+    
+    <div class="top-bar">
       <select v-if="hasMasks" v-model="currentMask">
         <option v-for="(mask, index) in masks" :key="index" :value="mask">{{ mask.name }}</option>
       </select>
       <div v-if="hasMasks" v-show="false">
         <img v-for="(mask, index) in masks" :key="index" :src="mask.img" :id="`${mask.name}`">
       </div>
+    </div>
+
+    <div class="workspace">
+
+      <nuxt-link class="back" to="/">
+        <svg class="icon">
+          <use xlink:href="/img/sprites.svg#icon-back"></use>
+        </svg>
+      </nuxt-link>
+
+      <video
+        :class="{ video: true, 'mirror__horizontal': mirroredH, 'mirror__vertical': mirroredV }"
+        ref="video"
+        :width="width"
+        :height="height"
+        preload="auto"
+        loop
+      ></video>
+      <canvas
+        :class="{ overlay: true, 'mirror__horizontal': mirroredH, 'mirror__vertical': mirroredV }"
+        :width="width"
+        :height="height"
+        ref="overlay"
+      ></canvas>
+      <canvas
+        v-if="hasMasks"
+        :class="{ overlay: true, 'mirror__horizontal': mirroredH, 'mirror__vertical': mirroredV }"
+        :width="width"
+        :height="height"
+        ref="webgl"
+      ></canvas>
     </div>
   </div>
 </template>
@@ -189,30 +200,27 @@ export default {
   display: flex
   align-items: center
   justify-content: center
+  flex-direction: column
+  height: 100vh
 
 .overlay
   position absolute
-  -o-transform scaleX(-1)
-  -webkit-transform scaleX(-1)
-  transform scaleX(-1)
+  left: 50%
+  top: 20px
+  transform scaleX(-1) translateX(50%)
 
 .video
-	-o-transform scaleX(-1)
-	-webkit-transform scaleX(-1)
-	transform scaleX(-1)
+  position: absolute
+  left: 50%
+  top: 20px
+  transform scaleX(-1) translateX(50%)
 
 .mirror__horizontal
-  -o-transform scaleY(-1)
-  -webkit-transform scaleY(-1)
   transform scaleY(-1)
 
 .mirror__vertical
-  -o-transform scaleX(1)
-  -webkit-transform scaleX(1)
   transform scaleX(1)
 
 .selectbox
   display: block;
-  position: absolute;
-  bottom: -40px;
 </style>

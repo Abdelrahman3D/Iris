@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  .wrapper
     .grid.is-center.top-bar
       .column.is-8.row
         .column.is-2
