@@ -5,17 +5,18 @@ $flexCenter
   align-items: center
 
 @import 'dolober/app'
-@import 'filters'
 @import 'index'
+@import 'filters'
+@import 'avm'
+
 
 .page-enter-active
 .page-leave-active
   transition: all .5s
 
-
-
 .page-enter
 .page-leave-to
   opacity: 0
-  
-  
+
+.is-center
+  @extends $flexCenter

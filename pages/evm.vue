@@ -1,27 +1,56 @@
 <template lang="pug">
   div
-    label(for='exa') Exgaration Factor:
-    input(type='range' ref="exa" style='width: 700px', min='0', max='5', step='0.01', @input='updateParams')
-    br
-    label(for='alpha') Alpha:
-    input(type='range' ref="alpha" style='width: 700px', min='1', max='100', step='0.01', @input='updateParams')
-    br
-    label(for='lambdac') Lambda:
-    input(type='range' ref="lambdac" style='width: 700px', min='1', max='90', step='0.01', @input='updateParams')
-    br
-    label(for='chroma') Chroma:
-    input(type='range', ref="chroma" style='width: 700px', min='0', max='10', step='0.01', @input='updateParams')
-    br
-    label(for='r1') r1:
-    input(type='range' ref="r1" style='width: 700px', min='0', max='1', step='0.01', @input='updateParams')
-    br
-    label(for='r2') r2:
-    input(type='range', ref="r2" style='width: 700px', min='0', max='1', step='0.01', @input='updateParams')
-    br
-    video(ref="video")
-    canvas(ref="canvas")
-    canvas(ref="savnac")
-    canvas(ref="chart")
+    .grid.is-center.top-bar
+      .column.is-8.row
+        .column.is-2
+          label(for='exa' tooltip="Hi i'm tooltip" tooltip-position='right') Exgaration:
+        .column.is-10
+          .slider#exa
+            input(type='range' ref="exa", min='0', max='5', step='0.01', @input='updateParams')
+
+        .column.is-2
+          label(for='alpha' tooltip="Hi" tooltip-position='right') Alpha:
+        .column.is-10
+          .slider#alpha
+            input(type='range' ref="alpha", min='1', max='100', step='0.01', @input='updateParams')
+
+        .column.is-2
+          label(for='lambdac' tooltip="Hi" tooltip-position='right') Lambda:
+        .column.is-10
+          .slider#lambdac
+            input(type='range' ref="lambdac", min='1', max='90', step='0.01', @input='updateParams')
+
+        .column.is-2
+          label(for='chroma' tooltip="Hi" tooltip-position='right') Chroma:
+        .column.is-10
+          .slider#chroma
+            input(type='range', ref="chroma", min='0', max='10', step='0.01', @input='updateParams')
+
+        .column.is-2
+          label(for='r1' tooltip="Hi" tooltip-position='right') r1:
+        .column.is-10
+          .slider#r1
+            input(type='range' ref="r1", min='0', max='1', step='0.01', @input='updateParams')
+
+        .column.is-2
+          label(for='r2' tooltip="Hi" tooltip-position='right') r2:
+        .column.is-10
+          .slider#r2
+            input(type='range', ref="r2", min='0', max='1', step='0.01', @input='updateParams')
+      .column.is-4
+        .evm-wrapper
+          canvas(ref="savnac")
+        
+
+    .workspace.grid.is-center
+      .column.is-6.is-center.source
+        video(ref="video")
+        a.upload
+          | uploade your vedio
+      .column.is-6.is-cetner
+        canvas.output(ref="canvas")
+      .column.is-6
+        canvas.chart(ref="chart")
 </template>
 
 <script>

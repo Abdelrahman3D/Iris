@@ -1,0 +1,96 @@
+.top-bar
+  padding: 20px 50px
+  background-color: $yellow
+
+  .slider
+    width: 100%
+  input
+    width: 100%
+  label
+    color: $dark
+
+$trackWidth = 2px
+$thumbDimater = 16px
+
+.workspace
+  padding: 20px 0
+  background-color: $dark
+
+.evm-wrapper
+  width: 100%
+  height: 120px
+  overflow: hidden
+  canvas
+    transform: scale(0.5)
+    transform-origin: top left
+
+.source
+  position: relative
+  video
+    height: auto
+  .upload
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    width 100%
+    height 100%
+    background: alpha($dark, 0.8)
+    color: $white
+    font-size: 20px
+    opacity: 0
+    transition: 0.5s
+    cursor: pointer
+    @extends $flexCenter
+    &:hover
+      opacity: 1
+
+
+input[type="range"]
+  appearance: none
+  -webkit-appearance: none
+  margin: 0
+  padding: 0
+  width: 100%
+  background: transparent
+  transition: all 0.2s ease-in-out
+
+  &::-webkit-slider-runnable-track
+    height: $trackWidth
+    background-color: $dark
+    cursor: pointer
+    border: 0
+
+  &::-moz-range-track
+    height: $trackWidth
+    background-color: $dark
+    cursor: pointer
+    transition: all 0.2s ease-in-out
+
+  &::-webkit-slider-thumb
+    appearance: none
+    margin-top: -($thumbDimater/2)
+    width: $thumbDimater
+    height: $thumbDimater
+    border-radius: $thumbDimater
+    background-color: $white
+    cursor: pointer
+    transition: all 0.2s ease-in-out
+
+  &::-moz-range-thumb
+    width: $thumbDimater
+    height: $thumbDimater
+    border: 0
+    border-radius: $thumbDimater
+    background-color: $yellow
+    cursor: pointer
+    transition: all 0.2s ease-in-out
+
+  &::-moz-range-progress
+    height: 2px
+    background-color: $yellow
+    transition: all 0.2s ease-in-out
+
+  &:focus
+    outline: 0
