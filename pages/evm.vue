@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import Chart from 'chart.js';
 import EVM from '~components/EVM';
 import Averaging from '~components/Averaging';
 
@@ -69,21 +68,7 @@ export default {
       this.xtc = this.$refs.savnac.getContext('2d');
       this.chartCtx = this.$refs.chart.getContext('2d');
       this.$evm = new EVM(this.ctx, this.xtc, width, height, 5);
-      this.$average = new Averaging(this.ctx, width, height);
-      this.barChart = new Chart(this.chartCtx, {
-        type: 'bar',
-        data: {
-          labels: new Array(20),
-          datasets: [{
-            label: 'average',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 1
-          }]
-        }
-      });
-      setInterval(() => {
-        this.barChart.data.datasets[0].data = this.$average.buffer;
-      }, 16);
+      this.$average = new Averaging(this.ctx, this.chartCtx, width, height);
       this.render();
     },
     listen() {
