@@ -54,8 +54,8 @@
 </template>
 
 <script>
-import EVM from '~components/EVM';
-import Averaging from '~components/Averaging';
+import EVM from '~assets/js/EVM';
+import Averaging from '~assets/js/Averaging';
 
 
 export default {

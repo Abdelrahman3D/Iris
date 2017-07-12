@@ -24,8 +24,11 @@ module.exports = {
   ** Customize the progress-bar color
   */
   loading: { color: '#3B8070' },
+  plugins: [
+    { src: '~plugins/components.js', ssr: false }
+  ],
   modules: [
-   '@nuxtjs/pwa'
+    '@nuxtjs/pwa'
   ],
   /*
   ** Build configuration
@@ -41,8 +44,8 @@ module.exports = {
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/
-        })
+        });
       }
     }
   }
-}
+};
