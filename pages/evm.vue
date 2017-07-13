@@ -6,37 +6,43 @@
           label(for='exa' tooltip="Hi i'm tooltip" tooltip-position='right') Exgaration:
         .column.is-10
           .slider#exa
-            input(type='range' ref="exa", min='0', max='5', step='0.01', @input='updateParams')
+            input(type='range' ref="exa", min='0', max='100', step='0.01', @input='updateParams')
+            input(type="text" v-model="params.exaggeration_factor")
 
         .column.is-2
           label(for='alpha' tooltip="Hi" tooltip-position='right') Alpha:
         .column.is-10
           .slider#alpha
-            input(type='range' ref="alpha", min='1', max='100', step='0.01', @input='updateParams')
+            input(type='range' ref="alpha", min='1', max='200', step='0.01', @input='updateParams')
+            input(type="text" v-model="params.alpha")
 
         .column.is-2
           label(for='lambdac' tooltip="Hi" tooltip-position='right') Lambda:
         .column.is-10
           .slider#lambdac
             input(type='range' ref="lambdac", min='1', max='90', step='0.01', @input='updateParams')
+            input(type="text" v-model="params.lambda_c")
 
         .column.is-2
           label(for='chroma' tooltip="Hi" tooltip-position='right') Chroma:
         .column.is-10
           .slider#chroma
             input(type='range', ref="chroma", min='0', max='10', step='0.01', @input='updateParams')
+            input(type="text" v-model="params.chromAttenuation")
 
         .column.is-2
           label(for='r1' tooltip="Hi" tooltip-position='right') r1:
         .column.is-10
           .slider#r1
             input(type='range' ref="r1", min='0', max='1', step='0.01', @input='updateParams')
+            input(type="text" v-model="params.r1")
 
         .column.is-2
           label(for='r2' tooltip="Hi" tooltip-position='right') r2:
         .column.is-10
           .slider#r2
             input(type='range', ref="r2", min='0', max='1', step='0.01', @input='updateParams')
+            input(type="text" v-model="params.r2")
       .column.is-4
         .evm-wrapper
           canvas(ref="savnac")
