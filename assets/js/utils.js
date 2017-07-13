@@ -3,7 +3,7 @@ export const imgMul = (n, lhs, rhs, c) => {
   const e = rhs.data[n];
 
   for (let i = 0; i < d.cols * d.rows; i++) {
-    d.data[i] = c * (d.data[i] + e.data[i]);
+    d.data[i] = (c * d.data[i]) + e.data[i];
   }
 };
 
