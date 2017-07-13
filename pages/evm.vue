@@ -40,7 +40,7 @@
       .column.is-4
         .evm-wrapper
           canvas(ref="savnac")
-        
+
 
     .workspace.grid.is-center
       nuxt-link.back(to="/")
@@ -49,8 +49,9 @@
 
       .column.is-6.is-center.source
         video(ref="video")
-        a.upload
-          | uploade your vedio
+        input(v-show="false" type="file" ref="file" @change="fileChanged")
+        a.upload(@click="upload")
+          | uploade your video
       .column.is-6.is-cetner
         canvas.output(ref="canvas")
       .column.is-6
@@ -85,6 +86,16 @@ export default {
     }
   }),
   methods: {
+    upload() {
+      this.$refs.file.click();
+    },
+    fileChanged() {
+      const file = this.$refs.file.files[0];
+      this.$refs.video.pause();
+      this.$refs.video.src = URL.createObjectURL(file);
+      this.$refs.video.loop = true;
+      this.$refs.video.play();
+    },
     prepare(width, height) {
       const s = Math.min(640 / width, 480 / height);
       // eslint-disable-next-line

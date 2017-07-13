@@ -12,18 +12,22 @@ export default class Averaging {
   }
 
   start() {
-    this.buffer = [];
-    setInterval(() => {
-      const frameAverage = this.getImageAverage();
-      if (this.buffer.length >= 20) this.buffer.shift();
-      this.buffer.push(frameAverage);
-      this.chart.data.datasets[0].data = this.buffer;
-    }, 16);
+    setInterval(this.update.bind(this), 50);
+  }
+
+  update() {
+    const frameAverage = this.getImageAverage();
+    if (this.buffer.length >= 20) {
+      this.buffer.shift();
+    }
+    this.buffer.push(frameAverage);
+    this.chart.data.datasets[0].data = this.buffer;
+    this.chart.update();
   }
 
   drawChart() {
     this.chart = new Chart(this.chartCtx, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: new Array(20),
         datasets: [{
@@ -31,6 +35,20 @@ export default class Averaging {
           data: [],
           borderWidth: 0.2
         }]
+      },
+      options: {
+        elements: {
+          line: {
+            tension: 0
+          }
+        },
+        animation: {
+          duration: 0, // general animation time
+        },
+        hover: {
+          animationDuration: 0, // duration of animations when hovering an item
+        },
+        responsiveAnimationDuration: 0, // animation duration after a resiz
       }
     });
   }

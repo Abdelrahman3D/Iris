@@ -7,7 +7,6 @@
   "dependencies": {
     "@nuxtjs/pwa": "^0.2.0",
     "chart.js": "^2.6.0",
-    "chartjs": "^0.3.24",
     "jsfeat": "^0.0.8",
     "nuxt": "^1.0.0-alpha.5",
     "pug": "^2.0.0-rc.2",
