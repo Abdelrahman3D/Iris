@@ -16,10 +16,17 @@ const kernels = [
       0.045, 0.122, 0.045
     ]
   }, {
-    name: 'unsharpen',
+    name: 'sharpen',
+    matrix: [
+       0, -1,  0,
+      -1,  5, -1,
+       0, -1,  0
+    ]
+  }, {
+    name: 'Edge detection',
     matrix: [
       -1, -1, -1,
-      -1,  9, -1,
+      -1,  8, -1,
       -1, -1, -1
     ]
   }, {

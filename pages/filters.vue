@@ -47,9 +47,10 @@ export default {
       { value: 0 }
     ],
     images: [
-      './img/image-01.jpg',
-      './img/image-02.jpg',
-      './img/image-03.jpg'
+      '/img/image-01.jpg',
+      '/img/image-02.jpg',
+      '/img/image-03.jpg',
+      '/img/mona-lisa.jpg',
     ],
     selectedImage: 'please an select image',
     kernels
