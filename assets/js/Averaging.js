@@ -17,7 +17,7 @@ export default class Averaging {
 
   update() {
     const frameAverage = this.getImageAverage();
-    if (this.buffer.length >= 20) {
+    if (this.buffer.length >= 200) {
       this.buffer.shift();
     }
     this.buffer.push(frameAverage);
@@ -29,11 +29,13 @@ export default class Averaging {
     this.chart = new Chart(this.chartCtx, {
       type: 'line',
       data: {
-        labels: new Array(20),
+        labels: new Array(200),
         datasets: [{
           label: 'average',
           data: [],
-          borderWidth: 0.2
+          borderWidth: 1,
+          borderColor: 'rgba(255, 240, 80, 1)',
+          backgroundColor: 'rgba(0, 0, 0, 0)'
         }]
       },
       options: {
