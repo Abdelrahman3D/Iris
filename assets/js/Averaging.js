@@ -25,6 +25,9 @@ export default class Averaging {
     this.chart.update();
   }
 
+  clear() {
+    this.buffer = [];
+  }
   drawChart() {
     this.chart = new Chart(this.chartCtx, {
       type: 'line',

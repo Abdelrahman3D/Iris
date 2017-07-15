@@ -95,12 +95,28 @@ export default {
     upload() {
       this.$refs.file.click();
     },
+    onLoad() {
+      if (this.$refs.video.videoWidth > 0 && this.$refs.video.videoHeight > 0) {
+        this.$refs.video.removeEventListener('loadeddata', this.onLoad);
+        this.prepare(this.$refs.video.videoWidth, this.$refs.video.videoHeight);
+        return;
+      }
+
+      if (this.attempts < 10) {
+        this.attempts++;
+        setTimeout(this.listen, 200);
+      } else {
+        this.prepare(640, 480);
+      }
+    },
     fileChanged() {
       const file = this.$refs.file.files[0];
       this.$refs.video.pause();
       this.$refs.video.src = URL.createObjectURL(file);
       this.$refs.video.loop = true;
       this.$refs.video.play();
+      cancelAnimationFrame(this.playInterval);
+      this.$refs.video.addEventListener('loadeddata', this.onLoad);
     },
     prepare(width, height) {
       const s = Math.min(640 / width, 480 / height);
@@ -117,26 +133,20 @@ export default {
       this.ctx = this.$refs.canvas.getContext('2d');
       this.xtc = this.$refs.savnac.getContext('2d');
       this.chartCtx = this.$refs.chart.getContext('2d');
-      this.$evm = new EVM(this.ctx, this.xtc, width, height, 5);
-      this.$average = new Averaging(this.ctx, this.chartCtx, width, height);
+      if (!this.$evm) {
+        this.$evm = new EVM(this.ctx, this.xtc, width, height, 5);
+      } else {
+        this.$evm.update(this.ctx, this.xtc, width, height, 5);
+      }
+      if (!this.$average) {
+        this.$average = new Averaging(this.ctx, this.chartCtx, width, height);
+      } else {
+        this.$average.clear();
+      }
       this.render();
     },
     listen() {
-      const onLoad = () => {
-        if (this.$refs.video.videoWidth > 0 && this.$refs.video.videoHeight > 0) {
-          this.$refs.video.removeEventListener('loadeddata', onLoad);
-          this.prepare(this.$refs.video.videoWidth, this.$refs.video.videoHeight);
-          return;
-        }
-
-        if (this.attempts < 10) {
-          this.attempts++;
-          setTimeout(this.listen, 200);
-        } else {
-          this.prepare(640, 480);
-        }
-      };
-      this.$refs.video.addEventListener('loadeddata', onLoad);
+      this.$refs.video.addEventListener('loadeddata', this.onLoad);
       navigator.getUserMedia({ video: true }, stream => {
         try {
           this.$refs.video.src = URL.createObjectURL(stream);
@@ -150,7 +160,7 @@ export default {
       }, err => console.log(err));
     },
     render() {
-      requestAnimationFrame(this.render.bind(this));
+      this.playInterval = requestAnimationFrame(this.render.bind(this));
       if (this.$refs.video.readyState !== this.$refs.video.HAVE_ENOUGH_DATA) return;
 
       this.ctx.fillRect(0, 0, 640, 480);

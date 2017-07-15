@@ -4,13 +4,23 @@ import ColorPyramid from './ColorPyramid';
 export default class EVM {
   constructor(ctx, xtc, width, height, depth) {
     // Setup Canvas contexts.
+    this.update(ctx, xtc, width, height, depth);
+    this.ctx.fillStyle = 'rgb(0,255,0)';
+    this.ctx.strokeStyle = 'rgb(0,255,0)';
+  }
+
+  update(ctx, xtc, width, height, depth) {
+    delete this.img_pyr;
+    delete this.img_ryp;
+    delete this.lowpass1;
+    delete this.lowpass2;
+    delete this.filtered;
+
     this.width = width;
     this.height = height;
     this.frames = 0;
     this.ctx = ctx;
     this.xtc = xtc;
-    this.ctx.fillStyle = 'rgb(0,255,0)';
-    this.ctx.strokeStyle = 'rgb(0,255,0)';
 
     this.img_pyr = new ColorPyramid(width, height, depth);
     this.img_ryp = new ColorPyramid(width, height, depth);
