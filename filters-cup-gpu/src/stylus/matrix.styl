@@ -1,0 +1,38 @@
+.matrix
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    input
+        width: 33.33%
+        flex-shrink: 0
+        margin: 0
+        border: 0
+        border: 2px solid $gray
+        line-height: 2em
+        font-size: 15px
+        text-align: center
+        -webkit-appearance: none
+        border-radius: 6px
+        &:focus
+            outline: none
+    &-button
+        width: 100%
+        background-color: $blue
+        border: 0
+        margin: 5px 0
+        padding: 10px 20px
+        border-radius: 6px
+        font-size: 15px
+        color: $white
+        box-shadow: inset 0 -3px 0 alpha($dark, 0.2)
+        cursor: pointer
+        transition: 0.4s
+        &:hover
+            box-shadow: inset 0 -3px 0 alpha($dark, 0.2), 0 6px 8px -2px alpha($dark, 0.2)
+        &:focus
+            box-shadow: inset 0 3px 0 alpha($dark, 0.2)
+            outline: none
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button
+  display: none
